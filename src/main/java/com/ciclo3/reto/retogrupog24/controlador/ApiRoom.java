@@ -27,4 +27,15 @@ public class ApiRoom {
         return ResponseEntity.status(201).build();
     }
 
+    @PutMapping("/update")
+    public ResponseEntity updateRoom(@RequestBody Room room){
+        service.updateRoom(room);
+        return ResponseEntity.status(201).build();
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteRoom(@PathVariable long id){
+        service.deleteRoom(id);
+        return ResponseEntity.status(204).build();
+    }
+
 }

@@ -19,9 +19,32 @@ public class ApiClient {
     public List<Client> findAllClients(){
         return service.getClients();
     }
+
+    @GetMapping("/{id}")
+    public Client getClient(@PathVariable long id){
+        return service.getClient(id);
+    }
+
     @PostMapping("/save")
     public ResponseEntity saveClient(@RequestBody Client client){
         service.saveClient(client);
         return ResponseEntity.status(201).build();
     }
+
+    @PutMapping("/update")
+    public ResponseEntity editClient(@RequestBody Client client){
+        service.updateClient(client);
+        return ResponseEntity.status(201).build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteClient(@PathVariable long id){
+        service.deleteClient(id);
+        return ResponseEntity.status(204).build();
+    }
+
+
+
+
+
 }

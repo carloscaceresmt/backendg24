@@ -23,10 +23,26 @@ public class ApiCategory {
     public List<Category> findAllCategory(){
         return service.getCategories();
     }
+    @GetMapping("/{id}")
+    public Category getCategory(@PathVariable long id){
+        System.out.println("id "+id);
+        return service.getCategory(id);
+    }
     @PostMapping("/save")
     public ResponseEntity saveCategory(@RequestBody  Category category){
         service.saveCategory(category);
         return ResponseEntity.status(201).build();
+    }
+    @PutMapping("/update")
+    public ResponseEntity updateCategory(@RequestBody Category category){
+        service.updateCategory(category);
+        return ResponseEntity.status(201).build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteCategory(@PathVariable long id){
+        service.deleteCategory(id);
+        return ResponseEntity.status(204).build();
     }
 
 }

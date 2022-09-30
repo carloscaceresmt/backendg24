@@ -16,4 +16,26 @@ public class ClientService {
     public Client saveClient(Client client){
         return repository.save(client);
     }
+
+    /**
+     * buscar registo del cliente por su id o pk
+     * @param id
+     * @return Client
+     */
+    public Client getClient(long id){
+        return repository.findById(id).orElse(null);
+    }
+
+    public void deleteClient(long id){
+        repository.deleteById(id);
+    }
+
+    public Client updateClient(Client clientUpd){
+        Client clientOld = getClient(clientUpd.getIdClient());
+        clientOld.setName(clientUpd.getName());
+        clientOld.setEmail(clientUpd.getEmail());
+        clientOld.setPassword(clientUpd.getPassword());
+        clientOld.setAge(clientUpd.getAge());
+        return repository.save(clientOld);
+    }
 }

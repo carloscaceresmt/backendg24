@@ -1,5 +1,6 @@
 package com.ciclo3.reto.retogrupog24.entidad;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,4 +21,4 @@ public class Client {
     private String password;
     private String name;
     private int age;
-}
+  }
